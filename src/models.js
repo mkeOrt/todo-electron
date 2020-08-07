@@ -4,6 +4,7 @@ import sequelize from './database';
 class Task extends Model {
   getDTO() {
     return {
+      id: this.id,
       title: this.title,
     };
   }
