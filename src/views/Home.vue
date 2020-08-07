@@ -53,11 +53,13 @@ export default {
         ipcRenderer.send('create-task', {
           title: task,
         });
+        // TODO Si un código no se utiliza no lo dejes
         // this.allTasksList.push({
         //   title: task,
         //   id: this.allTasksListCounter += 1,
         // });
       } else {
+        // TODO No hagas aqui la inserción
         this.allTasksList[this.task2.indice].title = this.taskDescription;
         this.taskEditing = false;
         this.task2 = '';
@@ -76,12 +78,15 @@ export default {
   },
   created() {
     ipcRenderer.on('get-all-tasks', (e, args) => {
-      console.log('get-all-users', args);
       this.allTasksList = args;
     });
     ipcRenderer.on('create-task', (e, args) => {
-      console.log('create-task', args);
+      console.log(args);
+      // TODO Aqui espera a que te responda para que lo agreges al listado
     });
+  },
+  destroyed() {
+    ipcRenderer.removeAllListeners();
   },
 };
 </script>
