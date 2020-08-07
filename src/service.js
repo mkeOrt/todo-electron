@@ -8,7 +8,7 @@ ipcMain.on('get-one-tasks', async (e, taskId) => {
 
 ipcMain.on('get-all-tasks', async (e) => {
   const tasks = await Task.findAll();
-  e.reply('get-all-tasks', tasks.map(task => task.getDTO()));
+  e.reply('get-all-tasks', tasks.map((task) => task.getDTO()));
 });
 
 ipcMain.on('create-task', async (e, args) => {
